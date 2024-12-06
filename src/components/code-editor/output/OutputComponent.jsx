@@ -5,9 +5,9 @@ const OutputComponent = () => {
     const executedCode = useSelector(state => state.executedcode)
 
   return (
-    <div className=' bg-[#222222] p-1 text-white font-[monospace] rounded-sm mb-2 overflow-scroll'>
+    <div className=' bg-[#222222] h-[45vh] p-1 text-white font-[monospace] rounded-sm mb-2 overflow-scroll'>
         <h3 className='sticky top-0 left-0 text-gray-700 text-md px-2 '>Output:</h3>
-        <pre className='h-[40vh] px-2'>
+        <pre className='h-[40vh] px-2 text-green-500'>
             {
                 executedCode.value ? executedCode.value : `
 * * *   *   *   *    *
@@ -19,7 +19,7 @@ const OutputComponent = () => {
 *     *   *  *    *  * *
 *     *   *  *    *  * 
  * *    *    * * *   * * *
-                `
+`
             }
         </pre>
     </div>
