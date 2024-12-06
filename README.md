@@ -1,8 +1,9 @@
-# React + Vite
+# Code Studio 
+O'zida bir nechta dasturlash tillarini jamlagan online compiler.
+Compilerda bor dasturlash tillari: 
+1. JavaScript
+2. Typescript
+3. Python
+4. Java
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<b>Code Studio</b> compilerida nafaqat kod yozish balkim dasturlash tillari haqida ma'lumot olishingiz mumkin.
