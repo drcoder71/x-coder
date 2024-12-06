@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    value: {
-        language: "Tanlang...",
-        icon: ''
+    language: {
+        value: "Tanlang...",
+        icon: {
+            value: ''
+        }
     }
 }
 
@@ -12,8 +14,8 @@ export const SelectLanguageSlice = createSlice({
     initialState,
     reducers: {
         changeLanguage: (state, action) => {
-            state.value.language = action.payload.language
-            state.value.icon = action.payload.icon
+            state.language.value = action.payload.language
+            state.language.icon.value = action.payload.icon
         }
     }
 })

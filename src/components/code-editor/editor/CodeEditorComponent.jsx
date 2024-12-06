@@ -25,7 +25,7 @@ const CodeEditorComponent = () => {
   };
 
   return (
-    <div className="lg:w-[85%] mx-auto w-[95%]">
+    <div className="lg:w-[85%] mx-auto w-[95%] rounded-lg">
       <CodeEditorHeaderComponent editorRef={editorRef} SetOutput={SetOutput} />
       <div className="relative flex items-start justify-center gap-2 flex-col lg:flex-row">
         <div className="lg:w-[72%] w-[100%]">

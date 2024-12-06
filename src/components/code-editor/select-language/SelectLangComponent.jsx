@@ -12,12 +12,12 @@ const languages = Object.entries(LANGUAGE_VERSION);
 
 const ChangeLanguageComponent = () => {
   const selectedLanguage = useSelector(
-    (state) => state.programminglanguage.value
+    (state) => state.programminglanguage.language
   );
   const dispatch = useDispatch();
   const [isActive, setActive] = useState(false);
 
-  const { language, icon } = selectedLanguage;
+  const { value, icon } = selectedLanguage;
 
   useEffect(() => {
     dispatch(changeLanguage({ language: 'Tanlang...', icon: <FaCode /> }));
@@ -27,11 +27,11 @@ const ChangeLanguageComponent = () => {
     <div className="relative">
       <div className="bg-[#023e7d] text-white flex items-center justify-start gap-2 rounded-sm">
         <ButtonUi
-          label={language}
+          label={value}
           className={"rounded-sm bg-[#014f86] text-white w-[120px] p-1"}
           clickHandler={() => setActive(prev => !prev)}
         />
-        <p className="text-3xl pr-2">{icon}</p>
+        <p className="text-3xl pr-2">{icon.value}</p>
       </div>
       {isActive ? (
         <ul className="absolute top-[50px] left-[0px] z-[999] rounded-xl bg-[#fff] px-3 overflow-hidden">
