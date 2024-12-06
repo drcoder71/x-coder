@@ -31,21 +31,21 @@ const CodeEditorHeaderComponent = ({ editorRef, SetOutput }) => {
   };
 
   return (
-    <div className="flex items-end justify-between my-2">
-      <div className="">
+    <div className="flex items-end justify-between my-2 gap-1">
+      <div className="flex items-center justify-between">
         <h1 className="text-xl md:text-3xl text-white py-2">Code Studio</h1>
-        <div className="inline-flex items-center justify-start gap-4 ">
+        <div className="inline-flex items-center justify-start gap-1 lg:gap-4 ">
           <ChangeLanguageComponent />
           <ButtonUi
             label={"Runner"}
-            icon={<FaPlay className={'w-4 h-4'}/>}
+            icon={<FaPlay className={'w-3 h-3 lg:w-4 lg:h-4'}/>}
             className={"bg-[#2a9134] rounded-sm text-white px-4 shadow-[0px_0px_15px_-10px_#00000077]"}
             clickHandler={runCode}
             disabled={value === "Tanlang..." ? true : false}
           />
         </div>
       </div>
-        <ButtonUi label={"System"} icon={<IoSettingsSharp className="w-5 h-5" />} className={'bg-[#fff] text-[#014f86] rounded-sm'}/>
+        {/* <ButtonUi label={"System"} icon={<IoSettingsSharp className="w-3 h-3 lg:w-5 lg:h-5" />} className={'bg-[#fff] text-[#014f86] rounded-sm'}/> */}
     </div>
   );
 };

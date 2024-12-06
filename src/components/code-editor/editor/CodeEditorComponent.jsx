@@ -28,9 +28,9 @@ const CodeEditorComponent = () => {
     <div className="lg:w-[85%] mx-auto w-[95%] rounded-lg">
       <CodeEditorHeaderComponent editorRef={editorRef} SetOutput={SetOutput} />
       <div className="relative flex items-start justify-center gap-2 flex-col lg:flex-row">
-        <div className="lg:w-[72%] w-[100%]">
+        <div className="lg:w-[72%] w-[100%] h-[50vh] lg:h-[80vh]">
           <Editor
-            height="80vh"
+            height="100%"
             width={"100%"}
             theme={"vs-dark"}
             language={selectLanguage}
@@ -40,7 +40,7 @@ const CodeEditorComponent = () => {
             onMount={onMount}
           />
         </div>
-        <div className="relative w-[100%] lg:w-[28%] overflow-hidden">
+        <div className="w-[100%] lg:w-[28%] overflow-hidden">
           <OutputComponent output={output} />
           <InformationLanguageComponent />
         </div>
