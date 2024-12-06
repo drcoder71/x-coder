@@ -5,7 +5,7 @@ import { PROGRAMMING_INFORMATION } from "../../../constants/programmingLangData"
 
 const InformationLanguageComponent = () => {
   const selectedLanguage = useSelector(
-    (state) => state.programminglanguage.language
+    (state) => state.codeeditor.language
   );
   return (
     <div className="h-[33.75vh] bg-[#1e1e1e] p-2 text-white rounded-sm overflow-scroll">

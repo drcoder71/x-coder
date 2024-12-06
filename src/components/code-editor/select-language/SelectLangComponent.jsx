@@ -4,15 +4,15 @@ import {
   LANGUAGE_VERSION,
 } from "../../../constants/programmingLangData";
 import { useDispatch, useSelector } from "react-redux";
-import { changeLanguage } from "../../../features/select-language/selectLanguageSlice";
 import { ButtonUi, ListItemUi } from "../../ui";
 import { FaCode } from "react-icons/fa";
+import { ChangeLanguage } from "../../../features/code-editor/codeEditorSlice";
 
 const languages = Object.entries(LANGUAGE_VERSION);
 
 const ChangeLanguageComponent = () => {
   const selectedLanguage = useSelector(
-    (state) => state.programminglanguage.language
+    (state) => state.codeeditor.language
   );
   const dispatch = useDispatch();
   const [isActive, setActive] = useState(false);
@@ -20,7 +20,7 @@ const ChangeLanguageComponent = () => {
   const { value, icon } = selectedLanguage;
 
   useEffect(() => {
-    dispatch(changeLanguage({ language: 'Tanlang...', icon: <FaCode /> }));
+    dispatch(ChangeLanguage({ language: 'Tanlang...', icon: <FaCode /> }));
   }, []);
 
   return (
@@ -42,7 +42,7 @@ const ChangeLanguageComponent = () => {
               className={"py-2 p-3 cursor-pointer border-b border-[#7d7d7d35]"}
               clickHandler={() => {
                 dispatch(
-                  changeLanguage({ language: lang, icon: LANGUAGE_ICONS[lang] })
+                  ChangeLanguage({ language: lang, icon: LANGUAGE_ICONS[lang] })
                 );
                 setActive(false);
               }}
