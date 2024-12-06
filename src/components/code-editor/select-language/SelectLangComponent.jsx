@@ -28,10 +28,10 @@ const ChangeLanguageComponent = () => {
       <div className="bg-[#023e7d] text-white flex items-center justify-start gap-2 rounded-sm">
         <ButtonUi
           label={value}
-          className={"rounded-sm bg-[#014f86] text-white w-[80px] p-1 text-sm lg:text-xl lg:w-[120px]"}
+          className={"rounded-sm bg-[#014f86] text-white p-1 text-sm w-[80px] lg:text-md lg:w-[120px]"}
           clickHandler={() => setActive(prev => !prev)}
         />
-        <p className="text-2xl pr-2 lg:text-3xl">{icon.value}</p>
+        <p className="text-2xl pr-2 lg:text-2xl">{icon.value}</p>
       </div>
       {isActive ? (
         <ul className="absolute top-[50px] left-[0px] z-[999] rounded-xl bg-[#fff] px-3 overflow-hidden">
