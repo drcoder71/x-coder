@@ -1,42 +1,45 @@
 import React, { useState } from "react";
-import { MdDarkMode } from "react-icons/md";
-import ButtonUI from "../../ui/ButtonUi";
 import ChangeLanguageComponent from "../select-language/SelectLangComponent";
 import ButtonUi from "../../ui/ButtonUi";
 import { executeCode } from "../../../api/code.api";
 import { useDispatch, useSelector } from "react-redux";
-import { ExecuteCodeSlice, ExecutedCode } from "../../../features/execute-cpde/executeCodeSlice";
+import {
+  ExecutedCode,
+} from "../../../features/execute-cpde/executeCodeSlice";
+import { LuSettings } from "react-icons/lu";
 
 const CodeEditorHeaderComponent = ({ editorRef, SetOutput }) => {
-    const dispatch = useDispatch()
-    const selectedLanguage = useSelector(state => state.programminglanguage)
+  const dispatch = useDispatch();
+  const { language } = useSelector((state) => state.programminglanguage.value);
 
-    const runCode = async () => {
-        const code = editorRef.current.getValue()
-        if(!code) return 
-        try {
-            const {run: result } = await executeCode(selectedLanguage.value, code)
-            dispatch(ExecutedCode(result.output))
-        } catch (err) {
-            console.log(err);
-        } finally {
-
-        }
+  const runCode = async () => {
+    const code = editorRef.current.getValue();
+    if (!code || language === 'Tanlang...') {
+      SetOutput(null)
+      return
     }
+    try {
+      const { run: result } = await executeCode(language, code);
+      dispatch(ExecutedCode(result.output));
+    } catch (err) {
+      console.log(err);
+    } finally {
+
+    }
+  };
 
   return (
     <div className="flex items-center justify-between my-2">
-      <div className="w-[150px]">
-        <h3 className="text-2xl text-white font-bold">File Coding</h3>
-      </div>
-      <div className="w-[480px] flex-1"></div>
-      <div className="w-[300px] flex justify-end items-center gap-3">
-        <div>
-            <ChangeLanguageComponent />
-        </div>
-        <div>
-            <ButtonUi label={'run code'} clickHandler={runCode} className={'bg-[#2c6e49] text-gray-300 rounded-md shadow-[0px_0px_13px_1px_white'}/>
-        </div>
+      <h1 className="text-xl md:text-3xl text-white ">Code Studio</h1>
+      <div className="inline-flex items-center justify-start gap-4 ">
+        <ButtonUi
+          label={"Runner"}
+          icon={<LuSettings className="w-5 h-5"/>}
+          className={"bg-green-600 rounded-sm text-white px-4"}
+          clickHandler={runCode}
+          disabled={language === "Tanlang..." ? true : false}
+        />
+        <ChangeLanguageComponent />
       </div>
     </div>
   );

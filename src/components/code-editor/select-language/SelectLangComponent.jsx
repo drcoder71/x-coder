@@ -1,41 +1,62 @@
-import React, { useState } from 'react'
-import { LANGUAGE_VERSION } from '../../../constants/programmingLangData'
-import { useDispatch, useSelector } from 'react-redux';
-import { changeLanguage } from '../../../features/select-language/selectLanguageSlice';
-import {ButtonUi, ListItemUi} from '../../ui'
+import React, { useEffect, useState } from "react";
+import {
+  LANGUAGE_ICONS,
+  LANGUAGE_VERSION,
+} from "../../../constants/programmingLangData";
+import { useDispatch, useSelector } from "react-redux";
+import { changeLanguage } from "../../../features/select-language/selectLanguageSlice";
+import { ButtonUi, ListItemUi } from "../../ui";
+import { FaCode } from "react-icons/fa";
 
-const languages = Object.entries(LANGUAGE_VERSION)
-
-console.log(languages);
-
+const languages = Object.entries(LANGUAGE_VERSION);
 
 const ChangeLanguageComponent = () => {
-    const selectLanguage = useSelector(state => state.programminglanguage.value)
-    const dispatch = useDispatch()
-    const [isActive, setActive] = useState(false)
+  const selectedLanguage = useSelector(
+    (state) => state.programminglanguage.value
+  );
+  const dispatch = useDispatch();
+  const [isActive, setActive] = useState(false);
+
+  const { language, icon } = selectedLanguage;
+
+  useEffect(() => {
+    dispatch(changeLanguage({ language: 'Tanlang...', icon: <FaCode /> }));
+  }, []);
 
   return (
-    <div className='relative'>
-      <ButtonUi label={selectLanguage} className={'rounded-md text-gray-300'} clickHandler={() => setActive(true)}/>
-      {
-        isActive ? (
-          <ul className='absolute top-[50px] right-[0px] z-[999] rounded-xl bg-[#929191] overflow-hidden'>
-            {
-              languages.map(([lang, version]) => (
-                <ListItemUi label={lang} key={lang} className={'py-2 p-3 cursor-pointer border-b border-[#7d7d7d]'} clickHandler={() => {
-                  dispatch(changeLanguage(lang))
-                  setActive(false)
-                }}>
-                  <span>{lang}</span>
-                  <span>{version}</span>
-                </ListItemUi>
-              ))
-            }
-          </ul>
-        ) : ''
-      }
+    <div className="relative">
+      <div className="bg-green-500 text-white flex items-center justify-start gap-2 rounded-sm">
+        <ButtonUi
+          label={language}
+          className={"rounded-sm bg-green-600 text-white w-[120px] p-1"}
+          clickHandler={() => setActive(prev => !prev)}
+        />
+        <p className="text-3xl pr-2">{icon}</p>
+      </div>
+      {isActive ? (
+        <ul className="absolute top-[50px] left-[0px] z-[999] rounded-xl bg-[#fff] px-3 overflow-hidden">
+          {languages.map(([lang, version]) => (
+            <ListItemUi
+              label={lang}
+              key={lang}
+              className={"py-2 p-3 cursor-pointer border-b border-[#7d7d7d35]"}
+              clickHandler={() => {
+                dispatch(
+                  changeLanguage({ language: lang, icon: LANGUAGE_ICONS[lang] })
+                );
+                setActive(false);
+              }}
+            >
+              <span>{lang}</span>
+              <span>{version}</span>
+            </ListItemUi>
+          ))}
+        </ul>
+      ) : (
+        ""
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default ChangeLanguageComponent
+export default ChangeLanguageComponent;

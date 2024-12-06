@@ -1,9 +1,10 @@
 import { Editor } from "@monaco-editor/react";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { CODE_SNIPPET } from "../../../constants/programmingLangData";
 import CodeEditorHeaderComponent from "../header/CodeEditorHeaderComponent";
 import OutputComponent from "../output/OutputComponent";
+import InformationLanguageComponent from "../information-language/InformationLanguageComponent";
 
 const CodeEditorComponent = () => {
   const [output, SetOutput] = useState(null)
@@ -15,13 +16,17 @@ const CodeEditorComponent = () => {
     editorRef.current = editor
     
     editor.focus()
+  }  
+
+  const MouseDown = (e) => {
+    console.log(e);
   }
 
   return (
     <div className="lg:w-[85%] mx-auto w-[95%]">
       <CodeEditorHeaderComponent editorRef={editorRef} SetOutput={SetOutput}/>
-      <div className="flex items-center justify-center gap-2 flex-col lg:flex-row">
-        <div className="lg:w-[50%] p-2 bg-[#1e1e1e] w-[100%]">
+      <div className="relative flex items-start justify-center flex-col lg:flex-row">
+        <div className="lg:w-[72%] w-[100%]">
         <Editor
           height="80vh"
           width={'100%'}
@@ -33,8 +38,12 @@ const CodeEditorComponent = () => {
           onMount={onMount}
         />
         </div>
-        <div className="w-[100%] lg:w-[50%]">
+        <div className="absolute top-0 left-[72%] h-full w-[7px] rounded-sm bg-gray-700 translate-x-[-50%] group hover:cursor-ew-resize" id="controller__resize" onMouseDown={MouseDown}>
+          <div className="w-[3px] h-[80%] translate-x-[50%] translate-y-[15%] rounded-sm bg-gray-800 group-hover:bg-gray-900 "></div>
+        </div>
+        <div className="w-[100%] lg:w-[28%]">
           <OutputComponent output={output}/>
+          <InformationLanguageComponent />
         </div>
       </div>
     </div>
