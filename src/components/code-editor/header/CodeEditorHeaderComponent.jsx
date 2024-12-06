@@ -35,7 +35,7 @@ const CodeEditorHeaderComponent = ({ editorRef, SetOutput }) => {
         <ButtonUi
           label={"Runner"}
           icon={<LuSettings className="w-5 h-5"/>}
-          className={"bg-green-600 rounded-sm text-white px-4"}
+          className={"bg-[#014f86] rounded-sm text-white px-4"}
           clickHandler={runCode}
           disabled={language === "Tanlang..." ? true : false}
         />

@@ -25,10 +25,10 @@ const ChangeLanguageComponent = () => {
 
   return (
     <div className="relative">
-      <div className="bg-green-500 text-white flex items-center justify-start gap-2 rounded-sm">
+      <div className="bg-[#023e7d] text-white flex items-center justify-start gap-2 rounded-sm">
         <ButtonUi
           label={language}
-          className={"rounded-sm bg-green-600 text-white w-[120px] p-1"}
+          className={"rounded-sm bg-[#014f86] text-white w-[120px] p-1"}
           clickHandler={() => setActive(prev => !prev)}
         />
         <p className="text-3xl pr-2">{icon}</p>

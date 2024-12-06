@@ -41,7 +41,7 @@ const CodeEditorComponent = () => {
         <div className="absolute top-0 left-[72%] h-full w-[7px] rounded-sm bg-gray-700 translate-x-[-50%] group hover:cursor-ew-resize" id="controller__resize" onMouseDown={MouseDown}>
           <div className="w-[3px] h-[80%] translate-x-[50%] translate-y-[15%] rounded-sm bg-gray-800 group-hover:bg-gray-900 "></div>
         </div>
-        <div className="w-[100%] lg:w-[28%]">
+        <div className="w-[100%] lg:w-[28%] overflow-hidden">
           <OutputComponent output={output}/>
           <InformationLanguageComponent />
         </div>
