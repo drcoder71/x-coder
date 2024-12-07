@@ -3,12 +3,12 @@ import { TbSlash } from "react-icons/tb";
 import { useSelector } from "react-redux";
 import { PROGRAMMING_INFORMATION } from "../../../constants/programmingLangData";
 
-const InformationLanguageComponent = () => {
+const InformationLanguageComponent = ({ className }) => {
   const selectedLanguage = useSelector(
     (state) => state.codeeditor.language
   );
   return (
-    <div className="h-[33.75vh] bg-[#1e1e1e] p-2 text-white rounded-sm overflow-scroll">
+    <div className={`h-[33.75vh] bg-[#1e1e1e] p-2 text-white rounded-sm overflow-scroll ${className}`}>
       <h3 className="text-sm text-gray-700 font-[monospace]">Information:</h3>
       {selectedLanguage.value === "Tanlang..." ? (
         <>

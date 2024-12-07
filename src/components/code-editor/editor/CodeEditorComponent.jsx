@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CODE_SNIPPET } from "../../../constants/programmingLangData";
 import { SetEditorCode } from "../../../features/code-editor/codeEditorSlice";
 
-const CodeEditorComponent = () => {
+const CodeEditorComponent = ({className}) => {
   const [value, setValue] = useState(" ");
   const codeEditorStore = useSelector((state) => state.codeeditor);
   const dispatch = useDispatch()
@@ -15,7 +15,7 @@ const CodeEditorComponent = () => {
   };
 
   return (
-    <div className="lg:w-[72%] w-[100%] h-[50vh] lg:h-[80vh]">
+    <div className={`lg:w-[72%] w-[100%] h-[50vh] lg:h-[80vh] ${className}`}>
       <Editor
         height="100%"
         width={"100%"}

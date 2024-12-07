@@ -6,7 +6,7 @@ const CodeEditorPage = () => {
   return (
     <div className='lg:w-[85%] mx-auto w-[95%] py-3 rounded-lg'>
         <CodeEditorHeaderComponent />
-        <EditorLayout layout={'regular'}/>
+        <EditorLayout />
     </div>
   )
 }
